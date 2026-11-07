@@ -1,0 +1,61 @@
+{
+  "name": "markdown-creator",
+  "displayName": "Markdown Creator",
+  "description": "Create Markdown files from the New File menu, Explorer, or Command Palette, with optional templates.",
+  "version": "1.0.2",
+  "publisher": "Ortyanetty",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ortyanetty/markdown-creator.git"
+  },
+  "homepage": "https://github.com/ortyanetty/markdown-creator#readme",
+  "bugs": { "url": "https://github.com/ortyanetty/markdown-creator/issues" },
+  "license": "MIT",
+  "icon": "media/icon.png",
+  "galleryBanner": { "color": "#10202E", "theme": "dark" },
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Other"],
+  "keywords": ["markdown", "md", "new file", "templates"],
+  "main": "./extension.js",
+  "activationEvents": [],
+  "capabilities": {
+    "untrustedWorkspaces": { "supported": true },
+    "virtualWorkspaces": { "supported": true }
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "markdownCreator.newFile",
+        "title": "Markdown File",
+        "icon": "$(markdown)"
+      },
+      {
+        "command": "markdownCreator.create",
+        "title": "Создать Markdown-файл (.md)",
+        "category": "Markdown",
+        "icon": "$(new-file)"
+      },
+      {
+        "command": "markdownCreator.createFromTemplate",
+        "title": "Создать Markdown-файл из шаблона…",
+        "category": "Markdown"
+      }
+    ],
+    "menus": {
+      "file/newFile": [
+        { "command": "markdownCreator.newFile", "group": "file@30" }
+      ],
+      "explorer/context": [
+        { "command": "markdownCreator.create", "group": "2_workspace@1" },
+        { "command": "markdownCreator.createFromTemplate", "group": "2_workspace@2" }
+      ],
+      "view/title": [
+        { "command": "markdownCreator.create", "when": "view == workbench.explorer.fileView", "group": "navigation@50" }
+      ]
+    }
+  },
+  "scripts": {
+    "test": "node --test test/unit.test.js",
+    "package": "npx @vscode/vsce package --no-dependencies --allow-missing-repository"
+  }
+}

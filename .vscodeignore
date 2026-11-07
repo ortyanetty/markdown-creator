@@ -1,0 +1,7 @@
+.vscode/**
+test/**
+*.vsix
+*.zip
+.gitignore
+media/*.svg
+PUBLISHING.md
